@@ -144,7 +144,7 @@ async def add_ip(interaction: Interaction, vps_name: str, ip: str):
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -174,7 +174,7 @@ async def rm_ip(interaction: Interaction, vps_name: str):
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -391,7 +391,7 @@ async def create_vps(interaction: Interaction, vps_name: str, cpu: int, ram: str
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -558,7 +558,7 @@ async def adminlist(interaction: Interaction):
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -579,7 +579,7 @@ async def delete_vps(interaction: Interaction, vps_name: str):
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -591,7 +591,7 @@ async def delete_vps(interaction: Interaction, vps_name: str):
         save_db(db)
     await interaction.response.send_message(f"🗑 VPS `{vps_name}` deleted successfully.")
 
-@bot.tree.command(name="delete-all", description="Delete all VPS (Owner only)")
+#@bot.tree.command(name="delete-all", description="Delete all VPS (Owner only)")
     with open("bot_owners.json", "r") as f:
         data = json.load(f)
 
@@ -630,7 +630,7 @@ async def editvps(interaction: discord.Interaction, vps_name: str, ram: str, dis
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
@@ -671,7 +671,7 @@ async def totalvps(interaction: Interaction):
         data = json.load(f)
 
     # Permission check
-    if interaction.user.id not in data["owners"]:
+    if str(interaction.user.id) not in data:
         await interaction.response.send_message(
             "❌ You are not allowed to use this command.", ephemeral=True
         )
