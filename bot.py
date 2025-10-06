@@ -592,7 +592,7 @@ async def delete_vps(interaction: Interaction, vps_name: str):
     await interaction.response.send_message(f"🗑 VPS `{vps_name}` deleted successfully.")
 
 @bot.tree.command(name="delete-all", description="Delete all VPS (Owner only)")
-with open("bot_owners.json", "r") as f:
+    with open("bot_owners.json", "r") as f:
         data = json.load(f)
 
     # Permission check
